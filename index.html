@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Evolving Colors</title>
+    <script type="text/javascript" src="./assetmanager.js"></script>
+    <script type="text/javascript" src="./timer.js"></script>
+    <script type="text/javascript" src="./gameengine.js"></script>
+    <script type="text/javascript" src="./util.js"></script>
+    <script type="text/javascript" src="./plant.js"></script>
+    <script type="text/javascript" src="./animat.js"></script>
+    <script type="text/javascript" src="./automata.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="gameWorld" width="1000" height="1000" style="background: white; border: 1px solid black" tabindex="0" autofocus></canvas>
+    <div class="slider-container">
+        <label id="plantgrowthLabel" for="plantgrowth">Plant Growth: 20</label>
+        <div id="plantslider">
+            <label for="plantgrowth">Slow</label>
+            <input type="range" id="plantgrowth" min="1" max="80" value="20" class="slider" oninput="updateLabel('plantgrowth', 'Plant Growth')">
+            <label for="plantgrowth">Fast</label>
+        </div>
+        <label id="animatgrowthLabel" for="animatgrowth">Animat Growth: 4</label>
+        <div id="animatslider">
+            <label for="animatgrowth">Slow</label>
+            <input type="range" id="animatgrowth" min="1" max="80" value="4" class="slider" oninput="updateLabel('animatgrowth', 'Animat Growth')">
+            <label for="animatgrowth">Fast</label>
+        </div>
+        <label id="animatselectionLabel" for="animatselection">Animat Food Selectivity: 0</label>
+        <div id="animatselectionslider">
+            <label for="animatselection">Low</label>
+            <input type="range" id="animatselection" min="-1" max="1" value="0" step="0.05" class="slider" oninput="updateLabel('animatselection', 'Animat Food Selectivity')">
+            <label for="animatselection">High</label>
+        </div>
+    </div>
+    <button type="button" id="plant" class="button">Add Plant</button>
+    <button type="button" id="animat" class="button">Add Animat</button>
+    <button type="button" id="clear" class="button">Clear All</button>
+
+    <script>
+        function updateLabel(sliderId, labelText) {
+            let slider = document.getElementById(sliderId);
+            let label = document.getElementById(sliderId + 'Label');
+            label.innerHTML = labelText + ': ' + slider.value;
+        }
+    </script>
+</body>
+</html>
